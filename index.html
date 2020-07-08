@@ -19,6 +19,25 @@
 		max-width: 85%;
 	}
 	
+	#menuDiv {
+		margin-bottom: 50px;
+	}
+	
+	#ulMenu {
+		color: white;
+		font-weight: bold;
+		list-style: none;
+		padding-top: 10px;
+	}
+	
+	#ulMenu li a {
+		color: white;
+	}
+	
+	#ulMenu li a:hover {
+		text-decoration: none;
+	}
+	
 	#menu {
 		width: 90%;
 		margin: auto auto 60px auto;
@@ -38,7 +57,7 @@
 	}
 	
 	.cursos h2 {
-		margin: 60px auto 20px auto;
+		margin: 100px auto 40px auto;
 		font-size: 1.7rem;
 		font-family: 'Galada', cursive;
 	}
@@ -51,6 +70,7 @@
 	}
 	
 	.cursos .card-curso h5 {
+		font-weight: bold;
 		margin-top: 10px;
 		height: 50px;
 	}
@@ -131,34 +151,34 @@
 		<h1>Faça sua Parte<br>Cursos Gratuitos com Certificado</h1>
 	</header>
 	
-	<nav>
-		<div id="menu"></div>
+	<nav id="menuDiv">
+		<div id="menu">
+			<ul class="" id="ulMenu"></ul>
+		</div>
 		<div class="menuIcon">
 			<i class="fas fa-chevron-circle-down" id="menuOpen"></i>
 			<i class="fas fa-chevron-circle-up" id="menuClose"></i>
 		</div>
-		
-
 	</nav>
 	
 	<main class="cursos container">
 		<h2>Cursos de Informática</h2>
-		<div id="informatica" class="row"></div>
+		<div id="informatica" class="row"></div><hr>
 		
 		<h2>Cursos de Gestão</h2>
-		<div id="gestao" class="row"></div>
+		<div id="gestao" class="row"></div><hr>
 		
 		<h2>Cursos de Desenvolvimento Pessoal</h2>
-		<div id="pessoal" class="row"></div>
+		<div id="pessoal" class="row"></div><hr>
 		
 		<h2>Cursos de Indústria</h2>
-		<div id="industria" class="row"></div>
+		<div id="industria" class="row"></div><hr>
 		
 		<h2>Cursos de Tecnologia</h2>
-		<div id="tecnologia" class="row"></div>
+		<div id="tecnologia" class="row"></div><hr>
 		
 		<h2>Cursos de Educação Básica</h2>
-		<div id="educacao" class="row"></div>
+		<div id="educacao" class="row"></div><hr>
 	</main>
 	
 	<footer class="footer">
@@ -189,11 +209,10 @@
 	    </div>
 	</footer>
 	
-	
-
 <script	src="scripts/cursos.js"></script>
 <script>
 	let menu = document.querySelector("#menu");
+	let ulMenu = document.querySelector("#ulMenu");
 	let menuheight = Number(menu.style.height);
 	let menuExpanded = false;
 	
@@ -202,18 +221,55 @@
 	
 	function expandeMenu () {
 		if (menuExpanded === false) {
-			menuheight = 200;
+			menuheight = 160;
 			menu.style.height = `${menuheight}px`;
 			menu.style.transition = ".5s";
 			menuExpanded = true;
 			menuIconOpen.style.display = "none";
 			menuIconClose.style.display = "block";
 			
-			let link = document.createElement("a");
-			link.setAttribute("href", "#");
-			link.onclick = expandeMenu;
-			link.appendChild(document.createTextNode("Acesse"));
-			menu.appendChild(link);
+			let liInf = document.createElement("li");
+			let linkInf = document.createElement("a");
+			linkInf.setAttribute("href", "#informatica");
+			linkInf.appendChild(document.createTextNode("INFORMÁTICA"));
+			liInf.appendChild(linkInf);
+			
+			let liGes = document.createElement("li");
+			let linkGes = document.createElement("a");
+			linkGes.setAttribute("href", "#gestao");
+			linkGes.appendChild(document.createTextNode("GESTÃO"));
+			liGes.appendChild(linkGes);
+			
+			let liDes = document.createElement("li");
+			let linkDes = document.createElement("a");
+			linkDes.setAttribute("href", "#pessoal");
+			linkDes.appendChild(document.createTextNode("DESENVOLVIMENTO"));
+			liDes.appendChild(linkDes);
+			
+			let liInd = document.createElement("li");
+			let linkInd = document.createElement("a");
+			linkInd.setAttribute("href", "#industria");
+			linkInd.appendChild(document.createTextNode("INDÚSTRIA"));
+			liInd.appendChild(linkInd);
+			
+			let liEdu = document.createElement("li");
+			let linkEdu = document.createElement("a");
+			linkEdu.setAttribute("href", "#educacao");
+			linkEdu.appendChild(document.createTextNode("EDUCAÇÃO"));
+			liEdu.appendChild(linkEdu);
+			
+			let liTec = document.createElement("li");
+			let linkTec = document.createElement("a");
+			linkTec.setAttribute("href", "#tecnologia");
+			linkTec.appendChild(document.createTextNode("TECNOLOGIA"));
+			liTec.appendChild(linkTec);
+
+			ulMenu.appendChild(liInf);
+			ulMenu.appendChild(liGes);
+			ulMenu.appendChild(liDes);
+			ulMenu.appendChild(liInd);
+			ulMenu.appendChild(liEdu);
+			ulMenu.appendChild(liTec);
 			
 		} else {
 			menuheight = 10;
@@ -224,16 +280,15 @@
 			menuIconOpen.style.display = "block";
 			menuIconClose.style.display = "none";
 			
-			let links = document.querySelectorAll("#menu a");
-			links.forEach( (link, index) => {
-				menu.removeChild(link);
+			let lis = document.querySelectorAll("#ulMenu li");
+			lis.forEach( (li, index) => {
+				ulMenu.removeChild(li);
 			})
 		}
 	}
 	
 	menuIconOpen.onclick = expandeMenu;
 	menuIconClose.onclick = expandeMenu;
-
 
 	class Curso {
 		constructor(nome, categoria, link, escola, carga) {
