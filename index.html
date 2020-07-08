@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Faça sua Parte | Cursos Gratuitos com Certificado</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Galada&family=PT+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+	<style>
+	
+	header {
+		text-align: center;
+		font-family: 'Galada', cursive;font-family: 'Galada', cursive;
+	}
+
+	#banner-lg {
+		margin: auto;
+		max-width: 85%;
+	}
+	
+	#menu {
+		width: 90%;
+		margin: auto auto 60px auto;
+		height: 10px;
+		background-color: #484848;
+	}
+	
+	.menuIcon {
+		width: 100%;
+		font-size: 2rem;
+		text-align: center;
+		margin: -60px auto;
+	}
+	
+	.menuIcon #menuClose {
+		display: none;
+	}
+	
+	.cursos h2 {
+		margin: 60px auto 20px auto;
+		font-size: 1.7rem;
+		font-family: 'Galada', cursive;
+	}
+	
+	.cursos .card-curso {
+		color: #333;
+		font-family: 'PT Sans', sans-serif;
+		border: solid 1px rgba(0,0,0,.2);
+		text-align: center;
+	}
+	
+	.cursos .card-curso h5 {
+		margin-top: 10px;
+		height: 50px;
+	}
+	
+	.cursos .card-curso .escola {
+		font-weight: bold;
+	}
+	
+	.cursos .card-curso:hover {
+		text-decoration: none;
+		color: #FF4500;
+		transition: .3s;
+	}
+	
+	.footer {
+		margin-top: 100px;
+		color: #dddddd;
+		background: #191970;
+		font-family: 'PT Sans', sans-serif;
+		padding: 20px;
+	}
+	
+	.footer #assinatura {
+		font-family: 'Galada', cursive;
+		font-size: 1.3rem;
+	}
+	
+	.footer #apresentacao {
+		text-align: justify;
+	}
+	
+	.footer a {
+		color: #dddddd;
+	}
+	
+	.footer .nav{
+		margin-top: 20px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	@media screen and (max-width: 680px) {
+		header h1 {
+			font-size: 1.5rem;
+			margin-bottom: 50px;
+		}
+		
+		.card-curso img {
+			width: 240px;
+		}
+		
+		#banner-lg {
+			margin-top: 30px;
+		}
+
+	}
+	
+	@media screen and (min-width: 681px) {
+		#banner-lg {
+			margin-top: -50px;
+		}
+		
+		header h1 {
+			margin-top: -50px;
+		}
+		
+	}
+	
+
+	
+	</style>
+</head>
+<body>
+	<header>
+		<img id="banner-lg" src="images/banner-lg.jpg">
+		<!--<img id="banner-sm" src="images/banner-sm.jpg">-->
+		<h1>Faça sua Parte<br>Cursos Gratuitos com Certificado</h1>
+	</header>
+	
+	<nav>
+		<div id="menu"></div>
+		<div class="menuIcon">
+			<i class="fas fa-chevron-circle-down" id="menuOpen"></i>
+			<i class="fas fa-chevron-circle-up" id="menuClose"></i>
+		</div>
+		
+
+	</nav>
+	
+	<main class="cursos container">
+		<h2>Cursos de Informática</h2>
+		<div id="informatica" class="row"></div>
+		
+		<h2>Cursos de Gestão</h2>
+		<div id="gestao" class="row"></div>
+		
+		<h2>Cursos de Desenvolvimento Pessoal</h2>
+		<div id="pessoal" class="row"></div>
+		
+		<h2>Cursos de Indústria</h2>
+		<div id="industria" class="row"></div>
+		
+		<h2>Cursos de Tecnologia</h2>
+		<div id="tecnologia" class="row"></div>
+		
+		<h2>Cursos de Educação Básica</h2>
+		<div id="educacao" class="row"></div>
+	</main>
+	
+	<footer class="footer">
+	    <div class="container">
+	        <div>
+				<p id="assinatura">Desenvolvido por Nathan Bahia</p>
+				<p id="apresentacao">Administrador de Empresas, graduando em Análise e Desenvolvimento de Sistemas e terminando um MBA em Gestão Financeira. Sou apaixonado por tecnologia e administração e espero que possa contribuir de alguma maneira com este canal.</p>
+			</div>
+	        <div>
+	            <ul class="nav">
+	                <li>
+	                    <a target="blank" href="https://linkedin.com/in/nathanbahia">
+	                        <i class="fab fa-linkedin"><span>  LinkedIn</span></i>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a target="blank" href="https://instagram.com/onathanbahia">
+	                        <i class="fab fa-instagram"><span>  Instagram</span></i>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a target="blank" href="https://github.com/Nathanbahia">
+	                        <i class="fab fa-github-square"><span>  GitHub</span></i>
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</footer>
+	
+	
+
+<script	src="scripts/cursos.js"></script>
+<script>
+	let menu = document.querySelector("#menu");
+	let menuheight = Number(menu.style.height);
+	let menuExpanded = false;
+	
+	let menuIconOpen = document.querySelector("#menuOpen");
+	let menuIconClose = document.querySelector("#menuClose");
+	
+	function expandeMenu () {
+		if (menuExpanded === false) {
+			menuheight = 200;
+			menu.style.height = `${menuheight}px`;
+			menu.style.transition = ".5s";
+			menuExpanded = true;
+			menuIconOpen.style.display = "none";
+			menuIconClose.style.display = "block";
+			
+			let link = document.createElement("a");
+			link.setAttribute("href", "#");
+			link.onclick = expandeMenu;
+			link.appendChild(document.createTextNode("Acesse"));
+			menu.appendChild(link);
+			
+		} else {
+			menuheight = 10;
+			menu.style.height = `${menuheight}px`;
+			menu.style.transition = ".5s";
+			menuExpanded = false;
+			
+			menuIconOpen.style.display = "block";
+			menuIconClose.style.display = "none";
+			
+			let links = document.querySelectorAll("#menu a");
+			links.forEach( (link, index) => {
+				menu.removeChild(link);
+			})
+		}
+	}
+	
+	menuIconOpen.onclick = expandeMenu;
+	menuIconClose.onclick = expandeMenu;
+
+
+	class Curso {
+		constructor(nome, categoria, link, escola, carga) {
+			this.nome = nome;
+			this.categoria = categoria;
+			this.link = link;
+			this.escola = escola;
+			this.carga = carga;
+			this.container;
+			this.imagem;
+			
+			if (this.categoria == "informatica") {
+				this.imagem = "images/informatica.jpg"
+				this.container = document.querySelector("#informatica")
+				
+			} else if (this.categoria == "gestao") {
+				this.imagem = "images/gestao.jpg"
+				this.container = document.querySelector("#gestao")
+			}
+			else if (this.categoria == "tecnologia") {
+				this.imagem = "images/tecnologia.jpg"
+				this.container = document.querySelector("#tecnologia")
+			}
+			else if (this.categoria == "industria") {
+				this.imagem = "images/industria.jpg"
+				this.container = document.querySelector("#industria")
+			}
+			else if (this.categoria == "pessoal") {
+				this.imagem = "images/pessoal.jpg"
+				this.container = document.querySelector("#pessoal")
+			}
+			
+			else if (this.categoria == "educacao") {
+				this.imagem = "images/educacao.jpg"
+				this.container = document.querySelector("#educacao")
+			}
+		}
+		
+		exibir () {
+			let card = document.createElement("a");
+			card.setAttribute("href", this.link);
+			card.setAttribute("target", "blank");
+			card.className = "col-12 col-sm-6 col-md-4 col-lg-3 card-curso"
+			
+			let nome = document.createElement("h5");
+			let txtNome = document.createTextNode(this.nome)
+			nome.appendChild(txtNome);
+			
+			let imagem = document.createElement("img");
+			imagem.setAttribute("src", this.imagem);
+			imagem.setAttribute("width", "200px");
+			
+			let escola = document.createElement("p");
+			escola.className = "escola";
+			let txtEscola = document.createTextNode(this.escola);
+			escola.appendChild(txtEscola);
+			
+			let carga = document.createElement("p");
+			let txtCarga = document.createTextNode(this.carga);
+			carga.appendChild(txtCarga);
+			
+			card.appendChild(nome);
+			card.appendChild(imagem);
+			card.appendChild(escola);
+			card.appendChild(carga);
+			this.container.appendChild(card);
+		}
+	}
+	
+	const cursosJson = cursos;
+	
+	cursosJson.forEach( (curso, index) => {
+		cursosJson[index] =  new Curso(curso.curso, curso.categoria, curso.link, curso.instituicao, curso.carga);
+		cursosJson[index].exibir()
+	})
+	
+</script>
+</body>
+</html>
